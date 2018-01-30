@@ -1,0 +1,25 @@
+{
+    "name": "rocketweb/module-checkout-enhancement",
+    "description": "Set default payment method, Google Search Address in shipping address.",
+    "require": {
+        "php": "~5.5|~7.0.0|7.0.2|7.0.4|~7.0.6",
+        "magento/module-checkout": "100.1.*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Rocket Web Inc.",
+            "email": "info@rocketweb.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "RocketWeb\\CheckoutEnhancement\\": ""
+        }
+    }
+}
