@@ -32,6 +32,7 @@
                 <libraries><![CDATA[places]]></libraries>
                 <country><![CDATA[US,CA]]></country>
                 <language><![CDATA[en_US]]></language>
+                <active_google_address_account>1</active_google_address_account>
             </google_map_address>
         </rocketweb_checkout_enhancement>
     </default>

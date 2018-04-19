@@ -33,6 +33,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_GOOGLE_MAP_ADDRESS_LIBRARIES = 'rocketweb_checkout_enhancement/google_map_address/libraries';
     const XML_GOOGLE_MAP_ADDRESS_COUNTRY = 'rocketweb_checkout_enhancement/google_map_address/country';
     const XML_GOOGLE_MAP_ADDRESS_LANGUAGE = 'rocketweb_checkout_enhancement/google_map_address/language';
+    const XML_GOOGLE_MAP_ADDRESS_ACTIVE_GOOGLE_ADDRESS_ACCOUNT = 'rocketweb_checkout_enhancement/google_map_address/active_google_address_account';
 
     /**
      * Is active default payment
@@ -135,5 +136,17 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             self::XML_GOOGLE_MAP_ADDRESS_LANGUAGE,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
+    }
+
+    public function getTemplate() {
+        if ($this->scopeConfig->isSetFlag(
+            self::XML_GOOGLE_MAP_ADDRESS_ACTIVE_GOOGLE_ADDRESS_ACCOUNT,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE)) {
+            $template =  'RocketWeb_CheckoutEnhancement::customer/address/edit.phtml';
+        } else {
+            $template = 'Magento_Customer::address/edit.phtml';
+        }
+
+        return $template;
     }
 }
