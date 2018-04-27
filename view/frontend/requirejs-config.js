@@ -2,7 +2,8 @@
 var config = {
     map: {
         "*": {
-            shipAddressForm: "RocketWeb_CheckoutEnhancement/js/ship-address-form"
+            shipAddressForm: "RocketWeb_CheckoutEnhancement/js/ship-address-form",
+            rwAddressValidation: 'RocketWeb_CheckoutEnhancement/js/account/addressValidation'
         }
     },
     config: {
@@ -17,5 +18,8 @@ var config = {
                 'RocketWeb_CheckoutEnhancement/js/view/amazon-shipping-mixin': true
             },
         }
+    },
+    paths: {
+            "TweenLite": "//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min",
     }
 };
