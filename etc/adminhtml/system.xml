@@ -78,9 +78,14 @@
                     </depends>
                 </field>
                 <field id="active_google_address_account" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Active in Account Address</label>
+                    <label>Enable for Account Address Form</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[Enable/Disable Google Map search address in Account->Edit Address(New Address) page.]]></comment>
+                </field>
+                <field id="active_google_address_billing" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable for Billing Address Form on Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Enable/Disable Google Map search address in Checkout->Payment Step-> Billing Address form]]></comment>
                 </field>
             </group>
         </section>

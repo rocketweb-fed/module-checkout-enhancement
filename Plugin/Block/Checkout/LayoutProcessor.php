@@ -62,4 +62,24 @@ class LayoutProcessor
         }
         return [$jsLayout];
     }
+
+    public function afterProcess(
+        \Magento\Checkout\Block\Checkout\LayoutProcessor $subject,
+        $jsLayout
+    ) {
+        if ($this->enhancementHelper->isActiveGoogleAddress() && $this->enhancementHelper->isActiveBillingGoogleAddress()) {
+            if (isset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+                ['payment']['children']['payments-list']['children']
+            )) {
+                foreach ($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+                         ['payment']['children']['payments-list']['children'] as $key => $payment) {
+                    if (isset($payment['children']['form-fields']['component'])) {
+                        $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+                        ['payment']['children']['payments-list']['children'][$key]['children']['form-fields']['component'] = 'RocketWeb_CheckoutEnhancement/js/view/billing/billing-address-fieldset';
+                    }
+                }
+            }
+        }
+        return $jsLayout;
+    }
 }

@@ -34,6 +34,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_GOOGLE_MAP_ADDRESS_COUNTRY = 'rocketweb_checkout_enhancement/google_map_address/country';
     const XML_GOOGLE_MAP_ADDRESS_LANGUAGE = 'rocketweb_checkout_enhancement/google_map_address/language';
     const XML_GOOGLE_MAP_ADDRESS_ACTIVE_GOOGLE_ADDRESS_ACCOUNT = 'rocketweb_checkout_enhancement/google_map_address/active_google_address_account';
+    const XML_GOOGLE_MAP_ADDRESS_ACTIVE_GOOGLE_ADDRESS_BILLING = 'rocketweb_checkout_enhancement/google_map_address/active_google_address_billing';
 
     /**
      * Is active default payment
@@ -77,6 +78,22 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         );
         return $flag && $this->getGoogleMapApiKey();
     }
+
+    /**
+     * Is active Google Maps Address Search for billing address in Checkout
+     *
+     * @return boolean
+     * @codeCoverageIgnore
+     */
+    public function isActiveBillingGoogleAddress()
+    {
+        $flag = $this->scopeConfig->isSetFlag(
+            self::XML_GOOGLE_MAP_ADDRESS_ACTIVE_GOOGLE_ADDRESS_BILLING,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+        return $flag && $this->getGoogleMapApiKey();
+    }
+
 
     /**
      * Get Google Maps API key

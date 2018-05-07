@@ -18,8 +18,8 @@ define(['jquery'], function ($) {
     'use strict';
 
     return function (config, element) {
-        var search_area = $('#rw-google-address-search'),
-            complete_form = $('#rw-google-complete-form'),
+        var search_area = $(element).closest('form').find(config.search_area),
+            complete_form = $(element).closest('form').find(config.complete_form),
             buttons = $(element).find('> a');
 
         buttons.on('click', function () {

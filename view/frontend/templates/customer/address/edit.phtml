@@ -53,7 +53,7 @@
     </fieldset>
     <fieldset class="fieldset" data-mage-init='{"RocketWeb_CheckoutEnhancement/js/account/google-address-search":{"restrictCountry": <?php echo $params["country"];?>}}'>
         <legend class="legend"><span><?= $block->escapeHtml(__('Address')) ?></span></legend><br>
-        <div class="actions legend" data-mage-init='{"shipAddressForm": {}}' >
+        <div class="actions legend" data-mage-init='{"rwGoogleAddressTab":{"search_area":"#rw-google-address-search","complete_form":"#rw-google-complete-form"}}' >
             <a class="google-auto-address active">Search</a>&nbsp;<a class="google-fill-address">Enter manually</a>
         </div><br/>
         <div id="rw-google-address-search" class="fieldset">
