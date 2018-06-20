@@ -3,9 +3,10 @@
     "description": "Set default payment method, Google Search Address in shipping address.",
     "require": {
         "php": "~5.5|~7.0.0|7.0.2|7.0.4|~7.0.6",
-        "magento/module-checkout": "100.2.*"
+        "magento/module-checkout": ">=100.2.0"
     },
     "type": "magento2-module",
+    "version": "1.0.2",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
