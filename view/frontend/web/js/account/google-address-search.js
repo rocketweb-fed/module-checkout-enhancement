@@ -74,7 +74,7 @@ define(
                                     if (street_address.length == 0) {
                                         street_address = val;
                                     } else {
-                                        street_address = street_address + ', ' + val;
+                                        street_address = street_address + ' ' + val;
                                     }
                                 } else if (addressType == 'administrative_area_level_1') {
                                     // we should save it and set after regionUpdater run
