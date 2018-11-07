@@ -74,7 +74,7 @@ define(
                                 }
                             } else {
                                 if(key == 'region_id' || key ==  'postcode' || key == 'telephone') {
-                                    if(typeof num !== "undefined") {
+                                    if(typeof num !== "undefined" && num !== null) {
                                         return num.length;
                                     } else {
                                         return false;
