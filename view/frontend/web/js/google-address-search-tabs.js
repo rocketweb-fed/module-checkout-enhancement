@@ -24,6 +24,7 @@ define(['jquery'], function ($) {
 
         buttons.on('click', function () {
             var el = $(this);
+            
             buttons.removeClass('active');
             el.addClass('active');
             if (el.hasClass('google-auto-address')) {

@@ -22,8 +22,6 @@ define(
         'Magento_Checkout/js/model/quote'
     ],
     function (
-        ko,
-        Component,
         quote
     ) {
         'use strict';

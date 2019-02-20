@@ -12,6 +12,7 @@ define([
     'use strict';
 
     $.widget('rocketweb.addressValidation', $.mage.addressValidation, {
+
         /**
          * Validation creation
          * @protected
@@ -21,6 +22,7 @@ define([
 
             this.element.validation({
                 "ignore": ":hidden:not(.validate-require)",
+                
                 /**
                  * Submit Handler
                  * @param {Element} form - address form
