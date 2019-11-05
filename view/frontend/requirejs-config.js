@@ -8,8 +8,8 @@ var config = {
     },
     config: {
         mixins: {
-            'Magento_Checkout/js/view/payment/default': {
-                'RocketWeb_CheckoutEnhancement/js/view/payment/default-mixin': true
+            'Magento_Checkout/js/model/checkout-data-resolver': {
+                'RocketWeb_CheckoutEnhancement/js/model/checkout-data-resolver-mixin': true
             },
             'Magento_Checkout/js/view/shipping': {
                 'RocketWeb_CheckoutEnhancement/js/view/shipping-mixin': true
