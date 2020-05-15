@@ -8,6 +8,34 @@
 
 /** @var \Magento\Customer\Block\Address\Edit $block */
 ?>
+<?php
+/** @var \RocketWeb\CheckoutEnhancement\Helper\Data $_helper */
+$_helper = $this->helper('RocketWeb\CheckoutEnhancement\Helper\Data');
+$paramsStr = '';
+?>
+<?php if ($_helper->isActiveGoogleAddress()): ?>
+    <?php
+    $params = ['key' => $_helper->getGoogleMapApiKey()];
+    $library  = $_helper->getGoogleMapAddressLibraries();
+    if (!empty($library)) {
+        $params['libraries'] = $library;
+    }
+    $country = $_helper->getGoogleMapAddressCountries();
+    if (!empty($country)) {
+        $params['country'] = implode(",", $country);
+    }
+    $language = $_helper->getGoogleMapAddressLanguage();
+    if (!empty($language)) {
+        $params['language'] = $language;
+    }
+    $paramsStr = '';
+    foreach ($params as $key => $value) {
+        $paramsStr .= '&' . $key . '=' . $value;
+    }
+    $paramsStr = trim($paramsStr, "&");
+    ?>
+<?php endif; ?>
+
 <?php $_company = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Company') ?>
 <?php $_telephone = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Telephone') ?>
 <?php $_fax = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Fax') ?>
@@ -51,7 +79,7 @@
         <?php endif ?>
 
     </fieldset>
-    <fieldset class="fieldset" data-mage-init='{"RocketWeb_CheckoutEnhancement/js/account/google-address-search":{"restrictCountry": <?php echo $params["country"];?>}}'>
+    <fieldset class="fieldset" data-mage-init='{"RocketWeb_CheckoutEnhancement/js/account/google-address-search":{"restrictCountry": <?php echo $params["country"];?>, "googleApiKey": "<?php echo $paramsStr; ?>"}}'>
         <legend class="legend"><span><?= $block->escapeHtml(__('Address')) ?></span></legend><br>
         <div class="actions legend" data-mage-init='{"rwGoogleAddressTab":{"search_area":"#rw-google-address-search","complete_form":"#rw-google-complete-form"}}' >
             <a class="google-auto-address active">Search</a>&nbsp;<a class="google-fill-address">Enter manually</a>

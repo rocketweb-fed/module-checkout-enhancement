@@ -15,8 +15,11 @@
  * @author    Rocket Web Inc.
  */
 define([
-    'jquery'
-], function ($) {
+    'jquery',
+    'underscore',
+    'jquery/ui',
+    'mage/validation'
+], function ($, _) {
     'use strict';
     var autocomplete,
         componentForm = {
@@ -141,26 +144,27 @@ define([
         }
         // Create the autocomplete object, restricting the search to geographical
         // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */ (document.getElementById(config.searchInput)),
-            {types: ['geocode'], componentRestrictions: {country: config.restrictCountry}});
-        //
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress.bind(this));
+        require(["//maps.google.com/maps/api/js?"+config.googleApiKey], function() {
+            if(typeof google !== "undefined" && typeof google.maps !== "undefined" && typeof google.maps.places !== "undefined") {
+                autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */ (document.getElementById(config.searchInput)),
+                    {types: ['geocode'], componentRestrictions: {country: config.restrictCountry}});
+                //
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress.bind(this));
 
-        // need to stop prop of the touchend event
-        $('.pac-container').on('touchend', function(e) {
-            e.stopImmediatePropagation();
+                // need to stop prop of the touchend event
+                $('.pac-container').on('touchend', function (e) {
+                    e.stopImmediatePropagation();
+                });
+            }
+            $('#'+config.searchInput).keypress(
+                function(event){
+                    if (event.which == '13') {
+                        event.preventDefault();
+                    }
+                });
         });
-
-        $('#'+config.searchInput).keypress(
-            function(event){
-                if (event.which == '13') {
-                    event.preventDefault();
-                }
-
-
-            });
     };
 });
